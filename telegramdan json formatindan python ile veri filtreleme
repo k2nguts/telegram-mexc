@@ -1,0 +1,16 @@
+import json
+
+# Load the JSON data
+with open('result.json', 'r') as file:
+    data = json.load(file)
+
+# Extract specific messages based on criteria
+filtered_messages = []
+for chat in data['chats']['list']:
+    for message in chat['messages']:
+        if message['date'] >= 1669546000  # Filter by date (example)
+            filtered_messages.append(message)
+
+# Create a new JSON file with the extracted messages
+with open('filtered_messages.json', 'w') as file:
+    json.dump(filtered_messages, file)
